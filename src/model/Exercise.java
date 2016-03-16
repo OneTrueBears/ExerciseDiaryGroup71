@@ -2,18 +2,20 @@ package model;
 
 public class Exercise {
 	private final String ID;
-	private int SESSION_ID;
-	private int gruppeID;
+	private Integer SESSION_ID;
+	private String gruppeID;
 	private String description;
 	private String type;
-	private int intensity;
+	private Integer intensity;
 	private double wLoad;
-	private int nrReps;
-	private int nrSets;
-	private int duration;
-	private int distance;
-	public Exercise(String iD, int sESSION_ID, int gruppeID, String description, String type, int intensity,
-			double wLoad, int nrReps, int nrSets, int duration, int distance) {
+	private Integer nrReps;
+	private Integer nrSets;
+	private Integer duration;
+	private Integer distance;
+	
+
+	public Exercise(String iD, Integer sESSION_ID, String gruppeID, String description, String type, Integer intensity,
+			double wLoad, Integer nrReps, Integer nrSets, Integer duration, Integer distance) {
 		super();
 		ID = iD;
 		SESSION_ID = sESSION_ID;
@@ -27,69 +29,112 @@ public class Exercise {
 		this.duration = duration;
 		this.distance = distance;
 	}
-	public int getSESSION_ID() {
+
+
+	public Integer getSESSION_ID() {
 		return SESSION_ID;
 	}
-	public void setSESSION_ID(int sESSION_ID) {
+
+
+	public void setSESSION_ID(Integer sESSION_ID) {
 		SESSION_ID = sESSION_ID;
 	}
-	public int getGruppeID() {
+
+
+	public String getGruppeID() {
 		return gruppeID;
 	}
-	public void setGruppeID(int gruppeID) {
+
+
+	public void setGruppeID(String gruppeID) {
 		this.gruppeID = gruppeID;
 	}
+
+
 	public String getDescription() {
 		return description;
 	}
+
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+
 	public String getType() {
 		return type;
 	}
+
+
 	public void setType(String type) {
 		this.type = type;
 	}
-	public int getIntensity() {
+
+
+	public Integer getIntensity() {
 		return intensity;
 	}
-	public void setIntensity(int intensity) {
+
+
+	public void setIntensity(Integer intensity) {
 		this.intensity = intensity;
 	}
+
+
 	public double getwLoad() {
 		return wLoad;
 	}
+
+
 	public void setwLoad(double wLoad) {
 		this.wLoad = wLoad;
 	}
-	public int getNrReps() {
+
+
+	public Integer getNrReps() {
 		return nrReps;
 	}
-	public void setNrReps(int nrReps) {
+
+
+	public void setNrReps(Integer nrReps) {
 		this.nrReps = nrReps;
 	}
-	public int getNrSets() {
+
+
+	public Integer getNrSets() {
 		return nrSets;
 	}
-	public void setNrSets(int nrSets) {
+
+
+	public void setNrSets(Integer nrSets) {
 		this.nrSets = nrSets;
 	}
-	public int getDuration() {
+
+
+	public Integer getDuration() {
 		return duration;
 	}
-	public void setDuration(int duration) {
+
+
+	public void setDuration(Integer duration) {
 		this.duration = duration;
 	}
-	public int getDistance() {
+
+
+	public Integer getDistance() {
 		return distance;
 	}
-	public void setDistance(int distance) {
+
+
+	public void setDistance(Integer distance) {
 		this.distance = distance;
 	}
+
+
 	public String getID() {
 		return ID;
 	}
+
 	
 	
 }
