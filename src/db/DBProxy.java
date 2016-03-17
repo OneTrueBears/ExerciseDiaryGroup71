@@ -8,15 +8,21 @@ import java.util.List;
 
 import model.Exercise;
 import model.ExerciseStatistics;
+import model.SessionView;
 
 public class DBProxy {
+	Connection con;
+	
+	public DBProxy(Connection con){
+		this.con = con;
+	}
 	
 	
-	
-	public List<Exercise> getExercises(Connection con){
+	public List<Exercise> getExercises(){
 		List<Exercise> exList = new ArrayList<Exercise>();
 		//Query for exercises "rs" is the ResultSet
-		ResultSet rs = DBQuery.QueryExercises(con);
+		String query = "SELECT * from EXERCISE";
+		ResultSet rs = DBQuery.Query(con, query);
 		try{
 			while (rs.next()){
 				 
@@ -48,8 +54,14 @@ public class DBProxy {
 		System.out.println();
 		return exList;
 	}
+	public ArrayList<SessionView> getSessions(){
+		ArrayList<SessionView> sessionViews = new ArrayList<>();
+		
+		
+		return sessionViews;
+	}
 
-	public void uploadStatistic(Connection con, ExerciseStatistics es){
+	public void uploadStatistic(ExerciseStatistics es){
 		String table = "exercise_statistics";
 		String values = es.getStat_id().toString() 		+ ", " + 
 						es.getEx_name() 				+ ", " +
@@ -68,7 +80,7 @@ public class DBProxy {
 		DBQuery.InsertInto(con, table, values);
 	}
 	
-	public void updateStatistics(Connection con, ExerciseStatistics es){
+	public void updateStatistics(ExerciseStatistics es){
 		String table = "exercise_statistics";
 		String idCol = "stat_id";
 		String ID = es.getStat_id().toString();
@@ -88,10 +100,11 @@ public class DBProxy {
 		DBQuery.Update(con, table, values, idCol, ID);
 	}
 
-	public List<ExerciseStatistics> getStatistics(Connection con){
+	public List<ExerciseStatistics> getStatistics(){
 		List<ExerciseStatistics> statList = new ArrayList<ExerciseStatistics>();
 		//Query for exercises "rs" is the ResultSet
-		ResultSet rs = DBQuery.QueryExercises(con);
+		String query = "SELECT * from EXERCISE_STATISTICS";
+		ResultSet rs = DBQuery.Query(con, query);
 		try{
 			while (rs.next()){
 				 
