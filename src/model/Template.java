@@ -16,6 +16,7 @@ public class Template {
 	private Integer weatherTemp;
 	private String weatherType;
 	private boolean isOutdoor;
+	
 	public Template(Integer iD, int pERSON_ID, Integer duration, Date dateTime, Integer healthCondition,
 			Integer performance, String purposeNote, String lateTips, Integer spectators, Integer airCondition,
 			Integer weatherTemp, String weatherType, boolean isOutdoor) {
