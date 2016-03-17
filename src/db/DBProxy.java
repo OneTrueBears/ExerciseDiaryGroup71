@@ -107,6 +107,7 @@ public class DBProxy {
 		  	DBQuery.InsertInto(con, table, values);
 
 		  for (Exercise ex : es.getExerciseList()){
+			System.out.println("Exercise Session ID: " + es.getID());
 			if (!es.getExerciseList().isEmpty()){
 				DBQuery.InsertInto(con, "SESSION_EXERCISE", es.getID() + ", " + "\'" + ex.getID() + "\'");				
 			}
