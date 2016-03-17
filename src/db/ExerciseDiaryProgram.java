@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import model.Exercise;
@@ -143,9 +144,13 @@ public class ExerciseDiaryProgram {
 					switch (menuItem) {
 
 					case 1:
-						for(Exercise exercise: proxy.getExercises()){
-							System.out.print(exercise.getID());							
+						List<Exercise> exercises = proxy.getExercises();
+						for(int i = 0; i < exercises.size(); i++){
+							System.out.println(exercises.get(i).getID() + (" ") + (i + 1));							
 						}
+						System.out.print("Choose an exercise index: ");
+						int chosen = Integer.parseInt(takeInput()); 
+						currentS.addExercise(exercises.get(chosen));
 						break;
 
 					case 2:
