@@ -197,7 +197,7 @@ public class DBProxy {
 				LocalDateTime date = LocalDateTime.parse(dateTime, formatter);
 				
 				//Add Exercise object to list
-				Session session = Session(sessionId, pERSON_ID, duration, date, healthCondition, performance, purposeNote, lateTips, spectators, airCondition, weatherTemp, weatherType, isOutdoor, exList);
+				session = new Session(sessionId, pERSON_ID, duration, date, healthCondition, performance, purposeNote, lateTips, spectators, airCondition, weatherTemp, weatherType, isOutdoor, exList);
 				
 				System.out.println("Got one!");
 				}
