@@ -128,6 +128,7 @@ public class ExerciseDiaryProgram {
 			switch (menuItem) {
 			case 1:
 				name = takeInput();
+				break;
 			case 2:
 				// Handle display of list of exercises in Sesssion tostring
 				
@@ -142,15 +143,18 @@ public class ExerciseDiaryProgram {
 
 					case 1:
 						eList.add( searchExercise() );
+						break;
 
 					case 2:
 						// do something like session.addExercise( editExercise()
 						// ) // call make new exercise and return into a method
 						// that adds this to session
+						break;
 
 					case 3:
 						System.out.println("done");
 						ok_2 = false;
+						break;
 					}
 				}
 			case 3:
@@ -159,26 +163,35 @@ public class ExerciseDiaryProgram {
 				sessionTime = LocalDateTime.parse( takeInput() , formatter);
 				
 				//TODO fix sessionTime
+				break;
 				
 			case 4:
 				duration = Integer.parseInt(takeInput());
+				break;
 			case 5:
 				healthCondition = Integer.parseInt(takeInput());
+				break;
 			case 6:
 				performance = Integer.parseInt(takeInput());
 				currentS.setPerformance(performance);
+				break;
 			case 7:
 				// Change to take long input
 				purposeNote = in.next();
+				break;
 			case 8:
 				// change to take long input
 				tips = in.next();
+				break;
 			case 9:
 				spectators = Integer.parseInt(takeInput());
+				break;
 			case 10:
 				airConditions = Integer.parseInt(takeInput());
+				break;
 			case 11:
 				weatherTemperature = in.nextInt();
+				break;
 			case 12: // sub stuff here, indoor and fill out
 				System.out.println("If outdoor, enter 1: ");
 				
@@ -188,6 +201,7 @@ public class ExerciseDiaryProgram {
 				} else {
 					outDoor = false;
 				}
+				break;
 			case 13:
 				submitted = true;
 				//TODO find some way to generate IDs as appropriate and add them
@@ -195,14 +209,17 @@ public class ExerciseDiaryProgram {
 				System.out.println("Form submitted");
 			
 				//TODO Do the DB upload here using sessionSubmit
+				break;
 
 			case 14:
 				Session templateS = new Session(personID, personID, duration, sessionTime, healthCondition, performance, purposeNote, tips, spectators, airConditions, weatherTemperature, weatherType, outDoor, eList);
 				//TODO do template submit here
 				System.out.println("Template saved");
+				break;
 			case 15:
 				//TODO do template submit here. Do like currentS = <- sessionobject here
 				System.out.println("Loaded Template");
+				break;
 
 			case 16:
 				boolean ok_3 = true;
@@ -217,21 +234,24 @@ public class ExerciseDiaryProgram {
 
 					case 1:
 						//TODO select exercise, enable substitution
-
+						break;
 					case 2:
 						//TODO fix adding result for specific exercise in this
 						// training session
-
+						break;
 					case 3:
 						System.out.println("done");
 						ok_3 = false;
+						break;
 					}
 				}
 			case 17:
 				weatherType = takeInput();
 				currentS.setWeatherType(weatherType);
+				break;
 			default:
 				System.out.println("Invalid choice.");
+				break;
 			} // RESULTS HOW
 		}
 	}
@@ -299,40 +319,52 @@ public class ExerciseDiaryProgram {
 			switch (menuItem) {
 			case 1:
 				ID = takeInput();
+				break;
 			case 2:
 				sessionID = Integer.parseInt(takeInput());
 				currentE.setSESSION_ID(null);
+				break;
 			case 3:
 				group = takeInput();
 				currentE.setGruppeID(group);
+				break;
 			case 4:
 				description = takeInput();
 				currentE.setDescription(description);
+				break;
 			case 5:
 				type = takeInput();
 				currentE.setType(type);
+				break;
 			case 6:
 				intensity = Integer.parseInt(takeInput());
 				currentE.setIntensity(intensity);
+				break;
 			case 7:
 				wLoad = Double.parseDouble(takeInput());
 				currentE.setwLoad(wLoad);
+				break;
 			case 8:
 				nrReps = Integer.parseInt(takeInput());
 				currentE.setNrReps(nrReps);
+				break;
 			case 9:
 				nrSets =Integer.parseInt(takeInput());
 				currentE.setNrSets(nrSets);
+				break;
 			case 10:
 				duration = Integer.parseInt(takeInput());
 				currentE.setDuration(duration);
+				break;
 			case 11:
 				distance =  Integer.parseInt(takeInput());
 				currentE.setDistance(distance);
+				break;
 			case 12:
-      	DBProxy.uploadExercises(currentE);
-        System.out.println("Exercise submitted");
+				DBProxy.uploadExercises(currentE);
+				System.out.println("Exercise submitted");
 				submitted = true;
+				break;
 			default:
 				System.out.println("Invalid choice.");
 			}
