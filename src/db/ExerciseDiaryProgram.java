@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Scanner;
 
+import model.Exercise;
 import model.Session;
 
 public class ExerciseDiaryProgram {
@@ -40,47 +41,41 @@ public class ExerciseDiaryProgram {
 	private void mainMenu() {
 		System.out.println("New Session: 1");
 		System.out.println("New Exercise: 2");
-		while (in.hasNext()) {
-			menuItem = in.nextInt();
-		}
+		menuItem = Integer.parseInt(takeInput());
 		switch (menuItem) {
 		case 1:
 			// sql injection
 			editSession();
 		case 2:
 			// sql injection
-			//editExercise();
+			editExercise();
 		default:
 			System.out.println("Invalid choice.");
 		}
 	}
 
 	private void editSession() { // black redirect
-		editSession(new Session(0,0,0,new Date(),0, 0,"", "", 0, 0 , 0, "", false));
+		editSession(new Session(0, 0, 0, new Date(), 0, menuItem, null, null, menuItem, menuItem, menuItem, null, false));
 
 	}
 
 	private void editSession(Session session) {
-		// Populate PotentialActions
-		// -x : Back/Cancel -x : Import template -x Name: Enter name of exercise
-		// session
 
-		// take input
-
-		// Input Field
 		String name;
 		int personID = 1;
 		String sessionTimeString;
 		LocalDateTime sessionTime;
+		int duration;
 		int spectators;
 		int healthCondition;
 		int performance;
 		String purposeNote;
 		String tips;
-		int airConditions;
+		String airConditions;
 		int weatherTemperature;
 		boolean outDoor;
-		boolean submitted = false;
+		boolean submitted = true;
+		String weatherType;
 
 		Session currentS = session;
 
@@ -91,6 +86,173 @@ public class ExerciseDiaryProgram {
 														// should show the empty
 														// default first
 														// timearound
+			System.out.println("Name Session: 1");
+			System.out.println("Add Exercise: 2");
+			System.out.println("Add dateTime: 3");
+			System.out.println("Add duration: 4");
+			System.out.println("Add Health Condition: 5");
+			System.out.println("Add Performance: 6");
+			System.out.println("Add Purpose Note: 7");
+			System.out.println("Add Tips: 8");
+			System.out.println("Add Spectators: 9");
+			System.out.println("Add Air Conditions: 10");
+			System.out.println("Add Weather Temperature: 11");
+			System.out.println("Is it outdoor?: 12");
+			System.out.println("Submit form: 13");
+			System.out.println("Save to Template: 14");
+			System.out.println("Load from Template: 15");
+			System.out.println("Select exercise for Swap/Result actions: 16");
+			System.out.println("Add Weather type: 17");
+
+			menuItem = Integer.parseInt(takeInput());
+
+			switch (menuItem) {
+			case 1:
+				name = takeInput();
+			case 2:
+				// Handle display of list of exercises in Sesssion tostring
+				boolean ok_2 = true;
+
+				while (ok_2) {
+					System.out.println("Add existing exercise: 1");
+					System.out.println("Add New exercise: 2");
+					System.out.println("OK: 3");
+
+					menuItem = Integer.parseInt(takeInput());
+					switch (menuItem) {
+
+					case 1:
+						// System.out.println("Type name of the exercise you
+						// want to add");
+						// call find exercise dialouge and return it here to be
+						// added
+
+					case 2:
+						// do something like session.addExercise( editExercise()
+						// ) // call make new exercise and return into a method
+						// that adds this to session
+
+					case 3:
+						System.out.println("done");
+						ok_2 = false;
+					}
+				}
+			case 3:
+				
+			case 4:
+				duration = Integer.parseInt(takeInput());
+			case 5:
+				healthCondition = Integer.parseInt(takeInput());
+			case 6:
+				performance = Integer.parseInt(takeInput());
+				currentS.setPerformance(performance);
+			case 7:
+				// Change to take long input
+				purposeNote = in.next();
+			case 8:
+				// change to take long input
+				tips = in.next();
+			case 9:
+				spectators = Integer.parseInt(takeInput());
+			case 10:
+				airConditions = (takeInput());
+			case 11:
+				weatherTemperature = in.nextInt();
+			case 12: // sub stuff here, indoor and fill out
+				int outDoorInt = in.nextInt();
+				if (outDoorInt == 1) {
+					outDoor = true;
+				} else {
+					outDoor = false;
+				}
+			case 13:
+				System.out.println("Form submitted");
+				// Do the DB stuff here
+				submitted = true;
+
+			case 14:
+				// do template submit here
+				System.out.println("Template saved");
+			case 15:
+				// do template submit here
+				System.out.println("Loaded Template");
+
+			case 16:
+				// do swap here.
+				boolean ok_3 = true;
+
+				while (ok_3) {
+					System.out.println("Swap existing exercise for subsitute: 1");
+					System.out.println("Add result for exercise: 2");
+					System.out.println("OK: 3");
+
+					menuItem = Integer.parseInt(takeInput());
+					switch (menuItem) {
+
+					case 1:
+						// select exercise, enable substitution
+
+					case 2:
+						// fix adding result for specific exercise in this
+						// training session
+
+					case 3:
+						System.out.println("done");
+						ok_3 = false;
+					}
+				}
+			case 17:
+				weatherType = takeInput();
+				currentS.setWeatherType(weatherType);
+			default:
+				System.out.println("Invalid choice.");
+			} // RESULTS HOW
+		}
+	}
+
+	private void login() {
+		Boolean ok = true;
+		while (ok) {
+			System.out.println("Login: 1");
+			menuItem = Integer.parseInt(takeInput());
+			switch (menuItem) {
+			case 1:
+				System.out.println("Enter username: ");
+				String username = takeInput();
+				int personID = 1;
+				// sql injection
+				ok = false;
+				mainMenu();
+			default:
+				System.out.println("Invalid choice.");
+			}
+		}
+	}
+
+	// DUD for now
+	private void editExercise() { // black redirect
+		editExercise(new Exercise(null, menuItem, null, null, null, menuItem, menuItem, menuItem, menuItem, menuItem,
+				menuItem));
+
+	}
+
+	private void editExercise(Exercise exercise) {
+		String name;
+		String sessionTimeString;
+		// progress
+		LocalDateTime sessionTime;
+		int spectators;
+		int healthCondition;
+		int performance;
+		String purposeNote;
+		String tips;
+		int airConditions;
+		int weatherTemperature;
+		boolean outDoor;
+		boolean submitted = true;
+
+		while (submitted == false) {
+			System.out.println("View of current Session being edited:");
 			System.out.println("Name Session: 1");
 			System.out.println("Add Exercise: 2");
 			System.out.println("Add date: 3");
@@ -142,43 +304,20 @@ public class ExerciseDiaryProgram {
 				System.out.println("Invalid choice.");
 			}
 		}
+
 	}
 
-	private void login () {
-    	    Boolean ok = false;
-    	    while (ok) {
-    	      System.out.println("Login: 1");
-    	      while (in.hasNext()){
-    	        menuItem = in.nextInt();
-    	      }
-
-    	      switch (menuItem){
-    	      case 1:
-    	        String username = in.next();
-    	        int personID = 1;
-    	        //sql injection
-    	        ok = true;
-    	        mainMenu();
-    	      default:
-    	        System.out.println("Invalid choice.");
-    	    }
-    }
-	
-	
-	
-	
-	
-	
-	
-	
 	// Helper methods ---------------------
-	
-	
-	//Display method/S?
-	
-	//refresh, take input?
-	
-	
 
-}
+	public String takeInput() {
+		while (in.hasNext()) {
+			return in.next();
+		}
+		return null;
+	}
+
+	// Display method/S?
+
+	// refresh, take input?
+
 }
