@@ -65,7 +65,7 @@ public class ExerciseDiaryProgram {
 	}
 
 	private void editSession() { // black redirect
-		editSession(new Session(1, 1, 0, LocalDateTime.now(), 0, 0, "0", "0", 0, 0, 0, "0", false, new ArrayList<Exercise>()));
+		editSession(new Session(99, 1, 0, LocalDateTime.now(), 0, 0, "0", "0", 0, 0, 0, "0", false, new ArrayList<Exercise>()));
 
 	}
 
