@@ -1,25 +1,34 @@
 package model;
 
-import java.util.Date;
-
 public class ExerciseStatistics {
 	
-	Integer stat_id;
-	String ex_name;
-	Date datetime;
-	boolean is_goal;
-	boolean is_completed;
-	String type;
-	Integer intensity;
-	double w_load;
-	Integer nr_reps;
-	Integer nr_sets;
-	Integer duration;
-	double distance;
+	@Override
+	public String toString() {
+		return "ExerciseStatistics [stat_id=" + stat_id + ", ex_name=" + ex_name + ", datetime=" + datetime
+				+ ", is_goal=" + is_goal + ", is_completed=" + is_completed + ", type=" + type + ", intensity="
+				+ intensity + ", w_load=" + w_load + ", nr_reps=" + nr_reps + ", nr_sets=" + nr_sets + ", duration="
+				+ duration + ", distance=" + distance + "]";
+	}
 	
-	public ExerciseStatistics(Integer stat_id, String ex_name, Date datetime, boolean is_goal, boolean is_completed,
+	
+	private Integer stat_id;
+	private String ex_name;
+	private String datetime;
+	private boolean is_goal;
+	private boolean is_completed;
+	private String type;
+	private Integer intensity;
+	private double w_load;
+	private Integer nr_reps;
+	private Integer nr_sets;
+	private Integer duration;
+	private double distance;
+	private Integer sessionID;
+	private Integer personID;
+	
+	public ExerciseStatistics(Integer stat_id, String ex_name, String datetime, boolean is_goal, boolean is_completed,
 			String type, Integer intensity, double w_load, Integer nr_reps, Integer nr_sets, Integer duration,
-			double distance) {
+			double distance, Integer sessionID, Integer personID) {
 		super();
 		this.stat_id = stat_id;
 		this.ex_name = ex_name;
@@ -33,8 +42,26 @@ public class ExerciseStatistics {
 		this.nr_sets = nr_sets;
 		this.duration = duration;
 		this.distance = distance;
+		this.sessionID = sessionID;
+		this.personID = personID;
 	}
 	
+	public Integer getSessionID() {
+		return sessionID;
+	}
+
+	public void setSessionID(Integer sessionID) {
+		this.sessionID = sessionID;
+	}
+
+	public Integer getPersonID() {
+		return personID;
+	}
+
+	public void setPersonID(Integer personID) {
+		this.personID = personID;
+	}
+
 	public Integer getStat_id() {
 		return stat_id;
 	}
@@ -47,10 +74,10 @@ public class ExerciseStatistics {
 	public void setEx_name(String ex_name) {
 		this.ex_name = ex_name;
 	}
-	public Date getDatetime() {
+	public String getDatetime() {
 		return datetime;
 	}
-	public void setDatetime(Date datetime) {
+	public void setDatetime(String datetime) {
 		this.datetime = datetime;
 	}
 	public boolean isIs_goal() {
