@@ -21,13 +21,14 @@ public class ExerciseDiaryProgram {
 	Scanner in;
 	Connection con;
 	int menuItem;
-	
+	DBProxy proxy;
 
 	// Constructor
-	public ExerciseDiaryProgram(Connection con) {
+	public ExerciseDiaryProgram(Connection con, DBProxy proxy) {
 		
 		this.con = con;
 		in = new Scanner(System.in);
+		this.proxy = proxy;
 
 	}
 
@@ -142,13 +143,13 @@ public class ExerciseDiaryProgram {
 					switch (menuItem) {
 
 					case 1:
-						eList.add( searchExercise() );
+						for(Exercise exercise: proxy.getExercises()){
+							System.out.print(exercise.getID());							
+						}
 						break;
 
 					case 2:
-						// do something like session.addExercise( editExercise()
-						// ) // call make new exercise and return into a method
-						// that adds this to session
+						
 						break;
 
 					case 3:
