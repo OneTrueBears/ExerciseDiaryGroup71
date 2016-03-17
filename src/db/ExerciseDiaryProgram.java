@@ -298,12 +298,12 @@ public class ExerciseDiaryProgram {
 			}
 			switch (menuItem) {
 			case 1:
-				ID = in.next();
+				ID = takeInput();
 			case 2:
 				sessionID = Integer.parseInt(takeInput());
 				currentE.setSESSION_ID(null);
 			case 3:
-				group = in.next();
+				group = takeInput();
 				currentE.setGruppeID(group);
 			case 4:
 				description = takeInput();
