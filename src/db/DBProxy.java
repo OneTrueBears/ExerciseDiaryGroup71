@@ -75,15 +75,15 @@ public class DBProxy {
 		String values = "EX_NAME" + " = " + es.getEx_name() 				+ ", " +
 						"DATETIME" + " = " + es.getDatetime() 				+ ", " +
 						"IS_GOAL" + " = " + es.isIs_goal() 					+ ", " +
-						"IS_COMPLETED" + " = " + es.isIs_completed() 			+ ", " +
-						"TYPE" + " = " + es.getType() 					+ ", " +
-						"INTENSITY " + " = " + es.getIntensity().toString() 	+ ", " +
+						"IS_COMPLETED" + " = " + es.isIs_completed() 		+ ", " +
+						"TYPE" + " = " + es.getType() 						+ ", " +
+						"INTENSITY " + " = " + es.getIntensity().toString() + ", " +
 						"W_LOAD" + " = " + es.getW_load()					+ ", " +
 						"NR_REPS" + " = " + es.getNr_reps() 				+ ", " +
 						"NR_SETS" + " = " + es.getNr_sets() 				+ ", " +
 						"DURATION" + " = " + es.getDuration() 				+ ", " +
 						"DISTANCE" + " = " + es.getDistance() 				+ ", " +
-						"SESSION_ID" + " = " + es.getSessionID() 				+ ", " +
+						"SESSION_ID" + " = " + es.getSessionID() 			+ ", " +
 						"PERSON_ID" + " = " + es.getPersonID();
 		DBQuery.Update(con, table, values, idCol, ID);
 	}
