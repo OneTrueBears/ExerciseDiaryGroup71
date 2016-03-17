@@ -7,9 +7,8 @@ import java.sql.Statement;
 
 public  class DBQuery {
 	
-	public static ResultSet QueryExercises(Connection con){
+	public static ResultSet Query(Connection con, String query){
 		Statement stmt = null;
-		String query = "SELECT * from EXERCISE";
 				
 		ResultSet rs;
 		try {

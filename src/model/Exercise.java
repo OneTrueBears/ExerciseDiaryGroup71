@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Exercise {
 	private final String ID;
 	private Integer SESSION_ID;
@@ -13,7 +15,7 @@ public class Exercise {
 	private Integer duration;
 	private Integer distance;
 	
-	//TODO: List of substitute exercises.
+	private ArrayList<Exercise> substituteExercises;
 	
 
 	public Exercise(String iD, Integer sESSION_ID, String gruppeID, String description, String type, Integer intensity,
@@ -30,9 +32,19 @@ public class Exercise {
 		this.nrSets = nrSets;
 		this.duration = duration;
 		this.distance = distance;
+		this.substituteExercises = new ArrayList<>();
 	}
 
 
+	public ArrayList<Exercise> getSubstituteExercises(){
+		return substituteExercises;
+	}
+	public void addSubstituteExercise(Exercise ex){
+		substituteExercises.add(ex);
+	}
+	public void removeSibstituteExercise(Exercise ex){
+		substituteExercises.remove(ex);
+	}
 	public Integer getSESSION_ID() {
 		return SESSION_ID;
 	}
@@ -144,8 +156,6 @@ public class Exercise {
 				+ description + ", type=" + type + ", intensity=" + intensity + ", wLoad=" + wLoad + ", nrReps="
 				+ nrReps + ", nrSets=" + nrSets + ", duration=" + duration + ", distance=" + distance + "]";
 	}
-	
-	
 	
 	
 }

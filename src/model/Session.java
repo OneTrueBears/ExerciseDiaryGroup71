@@ -17,13 +17,14 @@ public class Session {
 	private String weatherType;
 	private boolean isOutdoor;
 	private LocalDateTime date;
+	private ArrayList<Exercise> exerciseList;
 	
 	//TODO: List of exercises.
 	
 	
 	public Session(Integer iD, int pERSON_ID, Integer duration, LocalDateTime dateTime, Integer healthCondition,
 			Integer performance, String purposeNote, String lateTips, Integer spectators, Integer airCondition,
-			Integer weatherTemp, String weatherType, boolean isOutdoor) {
+			Integer weatherTemp, String weatherType, boolean isOutdoor, ArrayList<Exercise> exerciseList) {
 		super();
 		ID = iD;
 		PERSON_ID = pERSON_ID;
@@ -38,7 +39,27 @@ public class Session {
 		this.weatherTemp = weatherTemp;
 		this.weatherType = weatherType;
 		this.isOutdoor = isOutdoor;
+		this.exerciseList = exerciseList;
 	}
+	
+	public ArrayList<Exercise> getExerciseList(){
+		return exerciseList;
+	}
+	public void addExercise(Exercise ex){
+		exerciseList.add(ex);
+	}
+	public void removeExercise(Exercise ex){
+		exerciseList.remove(ex);
+	}
+	@Override
+	public String toString() {
+		return "Session [ID=" + ID + ", PERSON_ID=" + PERSON_ID + ", duration=" + duration + ", dateTime=" + dateTime
+				+ ", healthCondition=" + healthCondition + ", performance=" + performance + ", purposeNote="
+				+ purposeNote + ", lateTips=" + lateTips + ", spectators=" + spectators + ", airCondition="
+				+ airCondition + ", weatherTemp=" + weatherTemp + ", weatherType=" + weatherType + ", isOutdoor="
+				+ isOutdoor + ", exerciseList=" + exerciseList + "]";
+	}
+
 	public Integer getDuration() {
 		return duration;
 	}
