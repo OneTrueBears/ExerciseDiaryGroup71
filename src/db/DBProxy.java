@@ -94,21 +94,22 @@ public class DBProxy {
 		    es.getID()     + ", " + 
 		    Integer.toString(es.getPERSON_ID()) + ", " +
 		    es.getDuration().toString()   + ", " +
-		    es.getDateTime().toString()   + ", " +
+		    "\'" + es.getDateTime().toString() + "\'" + ", " +
 		    es.getHealthCondition().toString()  + ", " +
 		    es.getPerformance().toString()   + ", " +
-		    es.getPurposeNote()     + ", " +
-		    es.getLateTips()     + ", " +
+		    "\'" + es.getPurposeNote() + "\'"     + ", " +
+		    "\'" + es.getLateTips() + "\'"     + ", " +
 		    es.getSpectators().toString()  + ", " +
-		    es.getAirCondition().toString()  + ", " +
+		    "\'" + es.getAirCondition().toString() + "\'"  + ", " +
 		    es.getWeatherTemp().toString()  + ", " +
-		    es.getWeatherType().toString()  + ", " +
+		    "\'" + es.getWeatherType().toString() + "\'" + ", " +
 		    bol.toString();
 		  	DBQuery.InsertInto(con, table, values);
-		  
 
 		  for (Exercise ex : es.getExerciseList()){
-		    DBQuery.InsertInto(con, "SESSION_EXERCISE", es.getID() + ", " + ex.getID());
+			if (!es.getExerciseList().isEmpty()){
+				DBQuery.InsertInto(con, "SESSION_EXERCISE", es.getID() + ", " + "\'" + ex.getID() + "\'");				
+			}
 		  }
 		  
 		  
