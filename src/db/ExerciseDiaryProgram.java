@@ -161,12 +161,13 @@ public class ExerciseDiaryProgram {
 				System.out.println("Using the format \"yyyy-MM-dd HH:mm\",");
 				System.out.println("Enter datetime: ");
 				sessionTime = LocalDateTime.parse( takeInput() , formatter);
-				
+				currentS.setDateTime(sessionTime);
 				//TODO fix sessionTime
 				break;
 				
 			case 4:
 				duration = Integer.parseInt(takeInput());
+				currentS.setDuration(duration);
 				break;
 			case 5:
 				healthCondition = Integer.parseInt(takeInput());
