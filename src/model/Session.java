@@ -53,7 +53,7 @@ public class Session {
 	}
 	@Override
 	public String toString() {
-		return "Session [ID=" + ID + ", PERSON_ID=" + PERSON_ID + ", duration=" + duration + ", dateTime=" + dateTime
+		return "Session [ID=" + ID + ", PERSON_ID=" + PERSON_ID + ", duration=" + duration + ", dateTime=" + date
 				+ ", healthCondition=" + healthCondition + ", performance=" + performance + ", purposeNote="
 				+ purposeNote + ", lateTips=" + lateTips + ", spectators=" + spectators + ", airCondition="
 				+ airCondition + ", weatherTemp=" + weatherTemp + ", weatherType=" + weatherType + ", isOutdoor="

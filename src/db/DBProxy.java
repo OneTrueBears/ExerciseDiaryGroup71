@@ -91,7 +91,7 @@ public class DBProxy {
 		   bol = 0;
 		  }
 		  String values = 
-		    es.getID().toString()     + ", " + 
+		    es.getID()     + ", " + 
 		    Integer.toString(es.getPERSON_ID()) + ", " +
 		    es.getDuration().toString()   + ", " +
 		    es.getDateTime().toString()   + ", " +
@@ -108,7 +108,7 @@ public class DBProxy {
 		  
 
 		  for (Exercise ex : es.getExerciseList()){
-		   DBQuery.InsertInto(con, "SESSION_EXERCISE", es.getID().toString() + ", " + ex.getID());
+		   DBQuery.InsertInto(con, "SESSION_EXERCISE", es.getID() + ", " + ex.getID());
 		  }
 		  
 		  
@@ -130,7 +130,7 @@ public class DBProxy {
 		  DBQuery.InsertInto(con, table, values);
 	}
 	
-	public Session getSession(String sessionId){
+	public Session getSession(int sessionId){
 		//Gets and makes exercise list
 		ArrayList<Exercise> exList = new ArrayList<Exercise>();
 		//Query for exercises "rs" is the ResultSet
@@ -167,7 +167,7 @@ public class DBProxy {
 		
 		
 		//Gets and makes session
-		Session session;
+		Session session = null;
 		String sessionQuery = 	"SELECT *" 						+" "+
 								"FROM TRAINING_SESSION"			+" "+
 								"WHERE SESSION_ID = " + sessionId;
@@ -177,7 +177,7 @@ public class DBProxy {
 				 
 				//Parse the Results
 				String name = rs1.getString("EXERCISE_ID");
-				String pERSON_ID = rs1.getString("PERSON_ID");
+				int pERSON_ID = rs1.getInt("PERSON_ID");
 				Integer duration = rs1.getInt("DURATION");
 				String dateTime = rs1.getString("DATE_TIME");
 				Integer healthCondition = rs1.getInt("HEALTH_CONDITION");
@@ -197,17 +197,17 @@ public class DBProxy {
 				LocalDateTime date = LocalDateTime.parse(dateTime, formatter);
 				
 				//Add Exercise object to list
-				session = new Session(sessionId, pERSON_ID, duration, date, healthCondition, performance, purposeNote, lateTips, spectators, airCondition, weatherTemp, weatherType, isOutdoor, exList);
+				Session session = Session(sessionId, pERSON_ID, duration, date, healthCondition, performance, purposeNote, lateTips, spectators, airCondition, weatherTemp, weatherType, isOutdoor, exList);
 				
 				System.out.println("Got one!");
 				}
 		}
 		catch(SQLException e){
 			e.printStackTrace();
+			return null;
 		}
-		
-		
 		return session;
+		
 	}
 
 	public static void uploadStatistic(ExerciseStatistics es){
