@@ -82,7 +82,7 @@ public class DBProxy {
 	
 	
 	 public void uploadSession(Session es){
-		  String table = "TRAINING_SESSION";
+		  String table = "TRAINING_SESSION(SESSION_ID, PERSON_ID, DURATION, DATE_TIME, HEALTH_CONDITION, PERFORMANCE, PURPOSE_NOTE, LATE_TIPS, SPECTATORS, AIR_CONDITIONS, WEATHER_TEMP, WEATHER_TYPE, IS_OUTDOOR)";
 		  Integer bol;
 		  if (es.isOutdoor()==true){
 		   bol = 1;
