@@ -13,6 +13,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Exercise;
+import model.Session;
+
 public class DBTools // REUSE of prev made DBTool
 {
 
@@ -581,6 +584,42 @@ public class DBTools // REUSE of prev made DBTool
 			e.printStackTrace();
 		}
 	}
+	
+	// First iteration of a join sql getter
+//	public List<Exercise> getExercisesFromSession(Session session){
+//		List<Exercise> exList = null;
+//		String query = "SELECT EXERCISE.*, "
+//				+ "FROM EXERCISE, SESSION, SESSION_EXERCISE"
+//				+ "WHERE EXERCISE.SESSION_ID LIKE TRAINING_SESSION.SESSION_ID";
+//		ResultSet rs = DBQuery.Query(con, query);
+//		try{
+//			while (rs.next()){
+//				 
+//				//Parse the Results
+//				String name = rs.getString("EXERCISE_ID");
+//				String gruppeId = rs.getString("GRUPPE_ID");
+//				String description = rs.getString("DESCRIPTION");
+//				String type = rs.getString("TYPE");
+//				Integer intensity = rs.getInt("INTENSITY");
+//				Integer reps = rs.getInt("NR_REPS");
+//				Integer sets = rs.getInt("NR_SETS");
+//				double load = rs.getDouble("W_LOAD");
+//				Integer duration = rs.getInt("DURATION");
+//				Integer distance = rs.getInt("DISTANCE"); 
+//				
+//				//Add Exercise object to list
+//				exList.add(new Exercise(name, null, gruppeId, description, type, intensity, load, reps, sets, duration, distance));
+//
+//				}
+//		}
+//		catch(Exception e){
+//			e.printStackTrace();
+//		}
+//		for (Exercise exer : exList){
+//			System.out.println(exer);
+//		}
+//		return exList;
+//	}
 	
 	
 	
