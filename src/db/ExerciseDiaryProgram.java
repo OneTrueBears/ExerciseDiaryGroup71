@@ -45,6 +45,7 @@ public class ExerciseDiaryProgram {
 		switch (menuItem) {
 		case 1:
 			// sql injection
+			System.out.println("Choice 1 selected");
 			editSession();
 		case 2:
 			// sql injection
@@ -74,7 +75,7 @@ public class ExerciseDiaryProgram {
 		String airConditions;
 		int weatherTemperature;
 		boolean outDoor;
-		boolean submitted = true;
+		boolean submitted = false;
 		String weatherType;
 
 		Session currentS = session;
