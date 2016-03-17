@@ -23,6 +23,22 @@ public class DBConnect {
       }
   }//DBConnect END
   
+  public static Connection quickConnect()
+//	OBS DO NOT USE BEFORE USERNAME AND PASSWORD HAS BEEN DECIDED UPON BY THE GROUP!
+	{
+		try
+		{	
+			Connection con = DriverManager.getConnection("jdbc:mysql://mysql.stud.ntnu.no/kimera_venner","kimera_gruppe15", "cdji2005");
+			System.out.println("connection established");
+			return con;
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
+	}
+  
   public void connect(){
 
     try{
