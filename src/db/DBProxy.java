@@ -81,7 +81,7 @@ public class DBProxy {
 	}
 	
 	
-	 public static void uploadSession(Session es){
+	 public void uploadSession(Session es){
 		  String table = "TRAINING_SESSION";
 		  Integer bol;
 		  if (es.isOutdoor()==true){
@@ -116,13 +116,13 @@ public class DBProxy {
 		  
 	 }
 	 
-	 public static void uploadExercises(Exercise exe){
+	 public void uploadExercises(Exercise exe){
 		  String table = "EXERCISE";
-		  String values = exe.getID()   + ", " + 
+		  String values = "\'" + exe.getID() + "\'"  + ", " + 
 		      exe.getSESSION_ID().toString()  + ", " +
-		      exe.getGruppeID()    + ", " +
-		      exe.getDescription()    + ", " +
-		      exe.getType()   + ", " +
+		      "\'" + exe.getGruppeID() + "\'"    + ", " +
+		      "\'" + exe.getDescription() + "\'"    + ", " +
+		      "\'" + exe.getType() + "\'"  + ", " +
 		      exe.getIntensity().toString()     + ", " +
 		      exe.getNrReps().toString()  + ", " +
 		      exe.getNrSets().toString() + ", " +

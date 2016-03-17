@@ -206,7 +206,7 @@ public class ExerciseDiaryProgram {
 			case 13:
 				submitted = true;
 				//TODO find some way to generate IDs as appropriate and add them
-				DBProxy.uploadSession(currentS);
+				proxy.uploadSession(currentS);
 				System.out.println("Form submitted");
 			
 				//TODO Do the DB upload here using sessionSubmit
@@ -278,8 +278,8 @@ public class ExerciseDiaryProgram {
 
 	// DUD for now
 	private void editExercise() { // black redirect
-		editExercise(new Exercise(null, menuItem, null, null, null, menuItem, menuItem, menuItem, menuItem, menuItem,
-				menuItem));
+		editExercise(new Exercise("Bobs_exercise", 0, "0", "0", "Styrke", 0, 0, 0, 0, 0,
+				0));
 
 	}
 
@@ -300,7 +300,7 @@ public class ExerciseDiaryProgram {
   		
   		boolean  submitted = false;
 
-		while (submitted == false) {
+		while (submitted == false){
 			System.out.println("View of current Exercise being edited:");
 			System.out.println("Name Exercise: 1");
 			System.out.println("Add to Session: 2");
@@ -314,9 +314,7 @@ public class ExerciseDiaryProgram {
 			System.out.println("Define Duration: 10");
 			System.out.println("Define Distance: 11");
 			System.out.println("Submit Exercise: 12");
-			while (in.hasNext()) {
-				menuItem = in.nextInt();
-			}
+			menuItem = Integer.parseInt(takeInput());
 			switch (menuItem) {
 			case 1:
 				ID = takeInput();
@@ -362,7 +360,7 @@ public class ExerciseDiaryProgram {
 				currentE.setDistance(distance);
 				break;
 			case 12:
-				DBProxy.uploadExercises(currentE);
+				proxy.uploadExercises(currentE);
 				System.out.println("Exercise submitted");
 				submitted = true;
 				break;
