@@ -135,6 +135,15 @@ public class Exercise {
 		return ID;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Exercise [ID=" + ID + ", SESSION_ID=" + SESSION_ID + ", gruppeID=" + gruppeID + ", description="
+				+ description + ", type=" + type + ", intensity=" + intensity + ", wLoad=" + wLoad + ", nrReps="
+				+ nrReps + ", nrSets=" + nrSets + ", duration=" + duration + ", distance=" + distance + "]";
+	}
+	
+	
 	
 	
 }

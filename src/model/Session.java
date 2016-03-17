@@ -1,7 +1,7 @@
 package model;
 import java.util.*;
 
-public class Template {
+public class Session {
 
 	private final Integer ID;
 	private final int PERSON_ID;
@@ -16,8 +16,7 @@ public class Template {
 	private Integer weatherTemp;
 	private String weatherType;
 	private boolean isOutdoor;
-	
-	public Template(Integer iD, int pERSON_ID, Integer duration, Date dateTime, Integer healthCondition,
+	public Session(Integer iD, int pERSON_ID, Integer duration, Date dateTime, Integer healthCondition,
 			Integer performance, String purposeNote, String lateTips, Integer spectators, Integer airCondition,
 			Integer weatherTemp, String weatherType, boolean isOutdoor) {
 		super();
