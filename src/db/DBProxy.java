@@ -82,7 +82,7 @@ public class DBProxy {
 	
 	
 	 public static void uploadSession(Session es){
-		  String table = "Session";
+		  String table = "TRAINING_SESSION";
 		  Integer bol;
 		  if (es.isOutdoor()==true){
 		   bol = 1;
@@ -103,12 +103,12 @@ public class DBProxy {
 		    es.getAirCondition().toString()  + ", " +
 		    es.getWeatherTemp().toString()  + ", " +
 		    es.getWeatherType().toString()  + ", " +
-		     bol.toString();
-		  DBQuery.InsertInto(con, table, values);
+		    bol.toString();
+		  	DBQuery.InsertInto(con, table, values);
 		  
 
 		  for (Exercise ex : es.getExerciseList()){
-		   DBQuery.InsertInto(con, "SESSION_EXERCISE", es.getID() + ", " + ex.getID());
+		    DBQuery.InsertInto(con, "SESSION_EXERCISE", es.getID() + ", " + ex.getID());
 		  }
 		  
 		  

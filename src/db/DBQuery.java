@@ -24,6 +24,7 @@ public  class DBQuery {
 	
 	public static void InsertInto(Connection con, String table, String query){
 		Statement stmt = null;
+		System.out.println(query);
 		String command = 	"INSERT INTO " + table.toUpperCase() + " " +
 							"VALUES (" + query.toUpperCase() + " )";
 		try {

@@ -65,7 +65,7 @@ public class ExerciseDiaryProgram {
 	}
 
 	private void editSession() { // black redirect
-		editSession(new Session(0, 0, 0, LocalDateTime.now(), 0, 0, "0", "0", 0, 0, 0, "0", false, new ArrayList<Exercise>()));
+		editSession(new Session(1, 1, 0, LocalDateTime.now(), 0, 0, "0", "0", 0, 0, 0, "0", false, new ArrayList<Exercise>()));
 
 	}
 
@@ -88,7 +88,7 @@ public class ExerciseDiaryProgram {
 		boolean submitted = false;
 		String weatherType = currentS.getWeatherType();
 		ArrayList<Exercise> eList = new ArrayList<Exercise>();
-
+		
 		
 		//other
 		boolean ok_2 = true;
