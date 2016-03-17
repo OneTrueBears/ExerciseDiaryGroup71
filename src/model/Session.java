@@ -16,6 +16,10 @@ public class Session {
 	private Integer weatherTemp;
 	private String weatherType;
 	private boolean isOutdoor;
+	
+	//TODO: List of exercises.
+	
+	
 	public Session(Integer iD, int pERSON_ID, Integer duration, Date dateTime, Integer healthCondition,
 			Integer performance, String purposeNote, String lateTips, Integer spectators, Integer airCondition,
 			Integer weatherTemp, String weatherType, boolean isOutdoor) {

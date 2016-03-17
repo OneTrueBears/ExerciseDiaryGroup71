@@ -13,6 +13,8 @@ public class Exercise {
 	private Integer duration;
 	private Integer distance;
 	
+	//TODO: List of substitute exercises.
+	
 
 	public Exercise(String iD, Integer sESSION_ID, String gruppeID, String description, String type, Integer intensity,
 			double wLoad, Integer nrReps, Integer nrSets, Integer duration, Integer distance) {
