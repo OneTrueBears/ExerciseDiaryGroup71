@@ -65,7 +65,7 @@ public class ExerciseDiaryProgram {
 	}
 
 	private void editSession() { // black redirect
-		editSession(new Session(0, 0, 0, LocalDateTime.now(), 0, 0, "0", "0", 0, 0, 0, "0", false, null));
+		editSession(new Session(0, 0, 0, LocalDateTime.now(), 0, 0, "0", "0", 0, 0, 0, "0", false, new ArrayList<Exercise>()));
 
 	}
 
@@ -93,7 +93,6 @@ public class ExerciseDiaryProgram {
 		//other
 		boolean ok_2 = true;
 		int outDoorInt;
-		Session sessionSubmit;
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 		
@@ -137,8 +136,7 @@ public class ExerciseDiaryProgram {
 
 				while (ok_2) {
 					System.out.println("Add existing exercise: 1");
-					System.out.println("Add New exercise: 2");
-					System.out.println("OK: 3");
+					System.out.println("OK: 2");
 
 					menuItem = Integer.parseInt(takeInput());
 					switch (menuItem) {
@@ -146,23 +144,19 @@ public class ExerciseDiaryProgram {
 					case 1:
 						List<Exercise> exercises = proxy.getExercises();
 						for(int i = 0; i < exercises.size(); i++){
-							System.out.println(exercises.get(i).getID() + (" ") + (i + 1));							
+							System.out.println(exercises.get(i).getID() + (": ") + (i + 1));							
 						}
 						System.out.print("Choose an exercise index: ");
 						int chosen = Integer.parseInt(takeInput()); 
-						currentS.addExercise(exercises.get(chosen));
+						currentS.addExercise(exercises.get(chosen - 1));
 						break;
-
 					case 2:
-						
-						break;
-
-					case 3:
 						System.out.println("done");
 						ok_2 = false;
 						break;
 					}
 				}
+				break;
 			case 3:
 				System.out.println("Using the format \"yyyy-MM-dd HH:mm\",");
 				System.out.println("Enter datetime: ");
