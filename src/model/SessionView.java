@@ -1,10 +1,12 @@
 package model;
 
+import java.time.LocalDateTime;
+
 public class SessionView {
 
 	private final int ID;
-	private final String date;
-	public SessionView(int iD, String date) {
+	private final LocalDateTime date;
+	public SessionView(int iD, LocalDateTime date) {
 		super();
 		ID = iD;
 		this.date = date;
@@ -12,7 +14,7 @@ public class SessionView {
 	public int getID() {
 		return ID;
 	}
-	public String getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
 	
