@@ -6,8 +6,8 @@ public class Main {
 	public static void main(String[] args){
 //		connector.connect();
 		Connection con = DBConnect.quickConnect();
-		DBProxy proxy = new DBProxy();
-		proxy.getExercises(con);
+		DBProxy proxy = new DBProxy(con);
+		proxy.getExercises();
 		ExerciseDiaryProgram program = new ExerciseDiaryProgram(con);
 		program.run();
 	}

@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.Exercise;
+import model.Group;
 import model.Session;
+import model.SuperGroup;
 
 public class ExerciseDiaryProgram {
 
@@ -61,7 +63,7 @@ public class ExerciseDiaryProgram {
 	}
 
 	private void editSession() { // black redirect
-		editSession(new Session(0, 0, 0, LocalDateTime.now(), 0, 0, "0", "0", 0, 0, 0, "0", false));
+		editSession(new Session(0, 0, 0, LocalDateTime.now(), 0, 0, "0", "0", 0, 0, 0, "0", false, null));
 
 	}
 
@@ -189,13 +191,13 @@ public class ExerciseDiaryProgram {
 			case 13:
 				submitted = true;
 				//TODO find some way to generate IDs as appropriate and add them
-				sessionSubmit = new Session(personID, personID, duration, sessionTime, healthCondition, performance, purposeNote, tips, spectators, airConditions, weatherTemperature, weatherType, outDoor);
+				DBProxy.uploadSession(currentS);
 				System.out.println("Form submitted");
 			
 				//TODO Do the DB upload here using sessionSubmit
 
 			case 14:
-				sessionSubmit = new Session(personID, personID, duration, sessionTime, healthCondition, performance, purposeNote, tips, spectators, airConditions, weatherTemperature, weatherType, outDoor);
+				Session templateS = new Session(personID, personID, duration, sessionTime, healthCondition, performance, purposeNote, tips, spectators, airConditions, weatherTemperature, weatherType, outDoor, eList);
 				//TODO do template submit here
 				System.out.println("Template saved");
 			case 15:
@@ -328,7 +330,7 @@ public class ExerciseDiaryProgram {
 				distance =  Integer.parseInt(takeInput());
 				currentE.setDistance(distance);
 			case 12:
-      	DBProxy.uploadExercises();
+      	DBProxy.uploadExercises(currentE);
         System.out.println("Exercise submitted");
 				submitted = true;
 			default:
@@ -370,7 +372,7 @@ public class ExerciseDiaryProgram {
 		return null;
 	}
 	
-	public Supergroup searchGroup (){
+	public SuperGroup searchSuperGroup (){
 		
 		return null;
 	}

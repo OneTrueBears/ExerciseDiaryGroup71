@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Session {
 
-	private final Integer ID;
+	private final int ID;
 	private final int PERSON_ID;
 	private Integer duration;
 	private Integer healthCondition;
@@ -22,12 +22,12 @@ public class Session {
 	//TODO: List of exercises.
 	
 	
-	public Session(Integer iD, int pERSON_ID, Integer duration, LocalDateTime dateTime, Integer healthCondition,
+	public Session(int sessionId, int pERSON_ID2, Integer duration, LocalDateTime dateTime, Integer healthCondition,
 			Integer performance, String purposeNote, String lateTips, Integer spectators, Integer airCondition,
 			Integer weatherTemp, String weatherType, boolean isOutdoor, ArrayList<Exercise> exerciseList) {
 		super();
-		ID = iD;
-		PERSON_ID = pERSON_ID;
+		ID = sessionId;
+		PERSON_ID = pERSON_ID2;
 		this.duration = duration;
 		this.date = dateTime;
 		this.healthCondition = healthCondition;
@@ -126,7 +126,7 @@ public class Session {
 	public void setOutdoor(boolean isOutdoor) {
 		this.isOutdoor = isOutdoor;
 	}
-	public Integer getID() {
+	public int getID() {
 		return ID;
 	}
 	public int getPERSON_ID() {

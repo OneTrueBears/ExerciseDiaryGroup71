@@ -15,7 +15,7 @@ import model.Session;
 import model.SessionView;
 
 public class DBProxy {
-	Connection con;
+	static Connection con;
 	
 	public DBProxy(Connection con){
 		this.con = con;
@@ -81,7 +81,7 @@ public class DBProxy {
 	}
 	
 	
-	 public void uploadSession(Session es){
+	 public static void uploadSession(Session es){
 		  String table = "Session";
 		  Integer bol;
 		  if (es.isOutdoor()==true){
@@ -114,7 +114,7 @@ public class DBProxy {
 		  
 	 }
 	 
-	 public void uploadExercises(Exercise exe){
+	 public static void uploadExercises(Exercise exe){
 		  String table = "EXERCISE";
 		  String values = exe.getID()   + ", " + 
 		      exe.getSESSION_ID().toString()  + ", " +
@@ -210,7 +210,7 @@ public class DBProxy {
 		return session;
 	}
 
-	public void uploadStatistic(ExerciseStatistics es){
+	public static void uploadStatistic(ExerciseStatistics es){
 		String table = "exercise_statistics";
 		String values = es.getStat_id().toString() 		+ ", " + 
 						es.getEx_name() 				+ ", " +
