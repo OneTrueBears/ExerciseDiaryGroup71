@@ -2,8 +2,8 @@ package db;
 
 import java.sql.Connection;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 import model.Exercise;
@@ -19,6 +19,7 @@ public class ExerciseDiaryProgram {
 	Scanner in;
 	Connection con;
 	int menuItem;
+	
 
 	// Constructor
 	public ExerciseDiaryProgram(Connection con) {
@@ -60,30 +61,40 @@ public class ExerciseDiaryProgram {
 	}
 
 	private void editSession() { // black redirect
-		editSession(new Session(0, 0, 0, new Date(), 0, menuItem, null, null, menuItem, menuItem, menuItem, null, false));
+		editSession(new Session(0, 0, 0, LocalDateTime.now(), 0, 0, "0", "0", 0, 0, 0, "0", false));
 
 	}
 
 	private void editSession(Session session) {
 
+		Session currentS = session; //session if editing
+		
 		String name;
-		int personID = 1;
-		String sessionTimeString;
-		LocalDateTime sessionTime;
-		int duration;
-		int spectators;
-		int healthCondition;
-		int performance;
-		String purposeNote;
-		String tips;
-		String airConditions;
-		int weatherTemperature;
-		boolean outDoor;
+		int personID = currentS.getPERSON_ID();
+		LocalDateTime sessionTime = currentS.getDateTime();
+		int duration = currentS.getDuration();
+		int spectators = currentS.getSpectators();
+		int healthCondition = currentS.getHealthCondition();
+		int performance= currentS.getPerformance();
+		String purposeNote = currentS.getPurposeNote();
+		String tips = currentS.getLateTips();
+		int airConditions = currentS.getAirCondition();
+		int weatherTemperature = currentS.getWeatherTemp();
+		boolean outDoor = currentS.isOutdoor();
 		boolean submitted = false;
-		String weatherType;
+		String weatherType = currentS.getWeatherType();
 		ArrayList<Exercise> eList = new ArrayList<Exercise>();
 
-		Session currentS = session; //session if editing
+		
+		//other
+		boolean ok_2 = true;
+		int outDoorInt;
+		Session sessionSubmit;
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		
+		
+		
 
 		while (submitted == false) {
 			System.out.println("View of current Session being edited:");
@@ -117,7 +128,7 @@ public class ExerciseDiaryProgram {
 				name = takeInput();
 			case 2:
 				// Handle display of list of exercises in Sesssion tostring
-				boolean ok_2 = true;
+				
 
 				while (ok_2) {
 					System.out.println("Add existing exercise: 1");
@@ -141,6 +152,11 @@ public class ExerciseDiaryProgram {
 					}
 				}
 			case 3:
+				System.out.println("Using the format \"yyyy-MM-dd HH:mm\",");
+				System.out.println("Enter datetime: ");
+				sessionTime = LocalDateTime.parse( takeInput() , formatter);
+				
+				//TODO fix sessionTime
 				
 			case 4:
 				duration = Integer.parseInt(takeInput());
@@ -158,26 +174,32 @@ public class ExerciseDiaryProgram {
 			case 9:
 				spectators = Integer.parseInt(takeInput());
 			case 10:
-				airConditions = (takeInput());
+				airConditions = Integer.parseInt(takeInput());
 			case 11:
 				weatherTemperature = in.nextInt();
 			case 12: // sub stuff here, indoor and fill out
-				int outDoorInt = in.nextInt();
+				System.out.println("If outdoor, enter 1: ");
+				
+				outDoorInt = Integer.parseInt(takeInput());
 				if (outDoorInt == 1) {
 					outDoor = true;
 				} else {
 					outDoor = false;
 				}
 			case 13:
-				System.out.println("Form submitted");
-				//TODO Do the DB stuff here
 				submitted = true;
+				//TODO find some way to generate IDs as appropriate and add them
+				sessionSubmit = new Session(personID, personID, duration, sessionTime, healthCondition, performance, purposeNote, tips, spectators, airConditions, weatherTemperature, weatherType, outDoor);
+				System.out.println("Form submitted");
+			
+				//TODO Do the DB upload here using sessionSubmit
 
 			case 14:
+				sessionSubmit = new Session(personID, personID, duration, sessionTime, healthCondition, performance, purposeNote, tips, spectators, airConditions, weatherTemperature, weatherType, outDoor);
 				//TODO do template submit here
 				System.out.println("Template saved");
 			case 15:
-				//TODO do template submit here
+				//TODO do template submit here. Do like currentS = <- sessionobject here
 				System.out.println("Loaded Template");
 
 			case 16:
@@ -239,68 +261,75 @@ public class ExerciseDiaryProgram {
 	}
 
 	private void editExercise(Exercise exercise) {
-		String name;
-		String sessionTimeString;
-		// progress
-		LocalDateTime sessionTime;
-		int spectators;
-		int healthCondition;
-		int performance;
-		String purposeNote;
-		String tips;
-		int airConditions;
-		int weatherTemperature;
-		boolean outDoor;
-		boolean submitted = true;
+		String ID;
+		int sessionID;
+		String group;
+		String description;;
+		String type;
+		int intensity;
+  		double wLoad;
+  		int nrReps;
+  		int nrSets;
+  		int duration;
+  		int distance;
+    
+  		Exercise currentE = exercise;
+  		
+  		boolean  submitted = false;
 
 		while (submitted == false) {
-			System.out.println("View of current Session being edited:");
-			System.out.println("Name Session: 1");
-			System.out.println("Add Exercise: 2");
-			System.out.println("Add date: 3");
-			System.out.println("Add Health Condition: 4");
-			System.out.println("Add Performance: 5");
-			System.out.println("Add Purpose Note: 6");
-			System.out.println("Add Tips: 7");
-			System.out.println("Add Spectators: 8");
-			System.out.println("Add Air Conditions: 9");
-			System.out.println("Add Weather Temperature: 10");
-			System.out.println("Is it outdoor?: 11");
-			System.out.println("Submit form: 12");
+			System.out.println("View of current Exercise being edited:");
+			System.out.println("Name Exercise: 1");
+			System.out.println("Add to Session: 2");
+			System.out.println("Add to Group: 3");
+			System.out.println("Add Description: 4");
+			System.out.println("Define Type: 5");
+			System.out.println("Define Intensity: 6");
+			System.out.println("Define Weight Load: 7");
+			System.out.println("Define Number of Repetitions: 8");
+			System.out.println("Define Number of Sets: 9");
+			System.out.println("Define Duration: 10");
+			System.out.println("Define Distance: 11");
+			System.out.println("Submit Exercise: 12");
 			while (in.hasNext()) {
 				menuItem = in.nextInt();
 			}
 			switch (menuItem) {
 			case 1:
-				name = in.next();
+				ID = in.next();
 			case 2:
-				// sql injection
+				sessionID = Integer.parseInt(takeInput());
+				currentE.setSESSION_ID(null);
 			case 3:
-				sessionTimeString = in.next();
+				group = in.next();
+				currentE.setGruppeID(group);
 			case 4:
-				healthCondition = in.nextInt();
+				description = takeInput();
+				currentE.setDescription(description);
 			case 5:
-				performance = in.nextInt();
+				type = takeInput();
+				currentE.setType(type);
 			case 6:
-				purposeNote = in.next();
+				intensity = Integer.parseInt(takeInput());
+				currentE.setIntensity(intensity);
 			case 7:
-				tips = in.next();
+				wLoad = Double.parseDouble(takeInput());
+				currentE.setwLoad(wLoad);
 			case 8:
-				spectators = in.nextInt();
+				nrReps = Integer.parseInt(takeInput());
+				currentE.setNrReps(nrReps);
 			case 9:
-				airConditions = in.nextInt();
+				nrSets =Integer.parseInt(takeInput());
+				currentE.setNrSets(nrSets);
 			case 10:
-				weatherTemperature = in.nextInt();
+				duration = Integer.parseInt(takeInput());
+				currentE.setDuration(duration);
 			case 11:
-				int outDoorInt = in.nextInt();
-				if (outDoorInt == 1) {
-					outDoor = true;
-				} else {
-					outDoor = false;
-				}
+				distance =  Integer.parseInt(takeInput());
+				currentE.setDistance(distance);
 			case 12:
-				System.out.println("Form submitted");
-				// Do the DB stuff here
+      	DBProxy.uploadExercises();
+        System.out.println("Exercise submitted");
 				submitted = true;
 			default:
 				System.out.println("Invalid choice.");
@@ -336,15 +365,15 @@ public class ExerciseDiaryProgram {
 		return null;
 	}
 	
-	//public Group searchGroup (){
+	public Group searchGroup (){
 		
-		
-	//}
+		return null;
+	}
 	
-	//public Supergroup searchGroup (){
+	public Supergroup searchGroup (){
 		
-		
-	//}
+		return null;
+	}
 
 	// Display method/S?
 

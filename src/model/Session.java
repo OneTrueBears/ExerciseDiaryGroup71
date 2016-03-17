@@ -1,4 +1,5 @@
 package model;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class Session {
@@ -6,7 +7,6 @@ public class Session {
 	private final Integer ID;
 	private final int PERSON_ID;
 	private Integer duration;
-	private Date dateTime;
 	private Integer healthCondition;
 	private Integer performance;
 	private String purposeNote;
@@ -16,18 +16,19 @@ public class Session {
 	private Integer weatherTemp;
 	private String weatherType;
 	private boolean isOutdoor;
+	private LocalDateTime date;
 	
 	//TODO: List of exercises.
 	
 	
-	public Session(Integer iD, int pERSON_ID, Integer duration, Date dateTime, Integer healthCondition,
+	public Session(Integer iD, int pERSON_ID, Integer duration, LocalDateTime dateTime, Integer healthCondition,
 			Integer performance, String purposeNote, String lateTips, Integer spectators, Integer airCondition,
 			Integer weatherTemp, String weatherType, boolean isOutdoor) {
 		super();
 		ID = iD;
 		PERSON_ID = pERSON_ID;
 		this.duration = duration;
-		this.dateTime = dateTime;
+		this.date = dateTime;
 		this.healthCondition = healthCondition;
 		this.performance = performance;
 		this.purposeNote = purposeNote;
@@ -44,11 +45,11 @@ public class Session {
 	public void setDuration(Integer duration) {
 		this.duration = duration;
 	}
-	public Date getDateTime() {
-		return dateTime;
+	public LocalDateTime getDateTime() {
+		return date;
 	}
-	public void setDateTime(Date dateTime) {
-		this.dateTime = dateTime;
+	public void setDateTime(LocalDateTime dateTime) {
+		this.date = dateTime;
 	}
 	public Integer getHealthCondition() {
 		return healthCondition;
