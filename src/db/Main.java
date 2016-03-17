@@ -8,7 +8,7 @@ public class Main {
 		Connection con = DBConnect.quickConnect();
 		DBProxy proxy = new DBProxy();
 		proxy.getExercises(con);
-		ExerciseDiaryProgram program = new ExerciseDiaryProgram();
+		ExerciseDiaryProgram program = new ExerciseDiaryProgram(con);
 		program.run();
 	}
 }

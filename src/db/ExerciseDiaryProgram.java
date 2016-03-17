@@ -1,6 +1,8 @@
 package db;
 
+import java.sql.Connection;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -15,11 +17,13 @@ public class ExerciseDiaryProgram {
 	// Menu thing ref?
 	// input scanner thing ref?
 	Scanner in;
+	Connection con;
 	int menuItem;
 
 	// Constructor
-	public ExerciseDiaryProgram() {
-
+	public ExerciseDiaryProgram(Connection con) {
+		
+		this.con = con;
 		in = new Scanner(System.in);
 
 	}
@@ -77,8 +81,9 @@ public class ExerciseDiaryProgram {
 		boolean outDoor;
 		boolean submitted = false;
 		String weatherType;
+		ArrayList<Exercise> eList = new ArrayList<Exercise>();
 
-		Session currentS = session;
+		Session currentS = session; //session if editing
 
 		while (submitted == false) {
 			System.out.println("View of current Session being edited:");
@@ -123,10 +128,7 @@ public class ExerciseDiaryProgram {
 					switch (menuItem) {
 
 					case 1:
-						// System.out.println("Type name of the exercise you
-						// want to add");
-						// call find exercise dialouge and return it here to be
-						// added
+						eList.add( searchExercise() );
 
 					case 2:
 						// do something like session.addExercise( editExercise()
@@ -168,18 +170,17 @@ public class ExerciseDiaryProgram {
 				}
 			case 13:
 				System.out.println("Form submitted");
-				// Do the DB stuff here
+				//TODO Do the DB stuff here
 				submitted = true;
 
 			case 14:
-				// do template submit here
+				//TODO do template submit here
 				System.out.println("Template saved");
 			case 15:
-				// do template submit here
+				//TODO do template submit here
 				System.out.println("Loaded Template");
 
 			case 16:
-				// do swap here.
 				boolean ok_3 = true;
 
 				while (ok_3) {
@@ -191,10 +192,10 @@ public class ExerciseDiaryProgram {
 					switch (menuItem) {
 
 					case 1:
-						// select exercise, enable substitution
+						//TODO select exercise, enable substitution
 
 					case 2:
-						// fix adding result for specific exercise in this
+						//TODO fix adding result for specific exercise in this
 						// training session
 
 					case 3:
@@ -316,6 +317,34 @@ public class ExerciseDiaryProgram {
 		}
 		return null;
 	}
+	
+	public Exercise searchExercise (){
+		System.out.println("List of exercises in DB:");
+		//TODO print that ^
+		
+		String name = takeInput();
+		
+		//TODO return the exercise by 'name'
+		
+		
+		
+		return null;
+	}
+	
+	public Session searchSession (){
+		
+		return null;
+	}
+	
+	//public Group searchGroup (){
+		
+		
+	//}
+	
+	//public Supergroup searchGroup (){
+		
+		
+	//}
 
 	// Display method/S?
 
